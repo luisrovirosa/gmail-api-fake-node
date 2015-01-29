@@ -1,6 +1,11 @@
 var express = require('express')
 var app = express();
 var crypto = require('crypto');
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 var emails = {
     "1234": {
@@ -32,7 +37,7 @@ var emails = {
 
 app.set('port', (process.env.PORT || 5000));
 
-app.get('/', function (request, response) {
+app.get('/', function (request, response, next) {
     var EOF = "<br />";
     var explanation = "The methods are:" + EOF +
         "GET <a href='/email/new'>/email/new</a>&nbsp;&nbsp;&nbsp;&nbsp;-> To check if there is new email" + EOF +
@@ -43,7 +48,7 @@ app.get('/', function (request, response) {
     response.send(explanation);
 });
 
-app.get('/email/new', function (request, response) {
+app.get('/email/new', function (request, response, next) {
     var rnd = randomIntInc(0, 10);
     var result;
     if (rnd < 5) {
@@ -62,7 +67,7 @@ app.get('/email/new', function (request, response) {
     response.send(result);
 });
 
-app.get('/email/:id', function (request, response) {
+app.get('/email/:id', function (request, response, next) {
     var email = emails[request.params.id] ? emails[request.params.id] : createEmail();
     email.email = email.preview + 'Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per. ' +
     'Ius id vidit volumus mandamus, vide veritus democritum te nec, ei eos debet libris consulatu. No mei ferri graeco dicunt, ad cum veri accommodare. Sed at malis omnesque delicata, usu et iusto zzril meliore. Dicunt maiorum eloquentiam cum cu, sit summo dolor essent te. Ne quodsi nusquam legendos has, ea dicit voluptua eloquentiam pro, ad sit quas qualisque. Eos vocibus deserunt quaestio ei. ' +
@@ -71,7 +76,7 @@ app.get('/email/:id', function (request, response) {
     response.send(email);
 });
 
-app.post('/email', function (request, response) {
+app.post('/email', function (request, response, next) {
     setTimeout(function () {
         response.send("Email sent!");
         //console.log('hello world!');
