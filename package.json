@@ -1,0 +1,25 @@
+{
+  "name": "gmail-api-fake-node",
+  "version": "0.0.1",
+  "description": "A simple GMAIL API to learn AJAX",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "~4.9.x"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luisrovirosa/gmail-api-fake-node"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
