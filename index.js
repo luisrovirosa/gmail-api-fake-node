@@ -49,12 +49,14 @@ app.set('port', (process.env.PORT || 5000));
 app.get('/', function (request, response, next) {
     var EOF = "<br />";
     var explanation = "The methods are:" + EOF +
-        "GET <a href='/email/new'>/email/new</a>&nbsp;&nbsp;&nbsp;&nbsp;-> To check if there is new email" + EOF +
-        "GET <a href='/email/1234'>/email/:id</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> To retrieve the email information" + EOF +
-        "POST /email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> To send an email" + EOF + EOF + EOF +
-        "The existing email id are: 1234, 2345, 3456 and 4567. If you retrieve a different id it will be generated randomly." + EOF +
-        "GET <a href='/labels'>/labels</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> To retrieve the list of labels" + EOF +
+        "GET <a href='/email/new'>/email/new</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> To check if there is new email" + EOF +
+        "GET <a href='/email/1234'>/email/:id</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> To retrieve the email information" + EOF +
+        "POST /email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> To send an email" + EOF +
+        "GET <a href='/labels'>/labels</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> To retrieve the list of labels" + EOF +
         "GET <a href='/labels/professional'>/labels/&lt;name&gt;</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> To retrieve the list emails inside a label" + EOF +
+        EOF + EOF +
+        "The existing email id are: 1234, 2345, 3456 and 4567. If you retrieve a different id it will be generated randomly." + EOF +
+        "The existing labels are: friends, professional, events and things." + EOF +
 
         "";
 
