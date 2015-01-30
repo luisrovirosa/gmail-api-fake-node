@@ -57,7 +57,6 @@ app.get('/', function (request, response, next) {
         EOF + EOF +
         "The existing email id are: 1234, 2345, 3456 and 4567. If you retrieve a different id it will be generated randomly." + EOF +
         "The existing labels are: friends, professional, events and things." + EOF +
-
         "";
 
     response.send(explanation);
@@ -97,7 +96,7 @@ app.get('/email/:id', function (request, response, next) {
 
 app.post('/email', function (request, response, next) {
     setTimeout(function () {
-        response.send("Email sent!");
+        response.send("Email sent to /dev/null!");
         //console.log('hello world!');
     }, 2000);
 });
@@ -174,6 +173,7 @@ app.get('/labels/:name', function (request, response, next) {
     var emails = {};
     emailIds.forEach(function (emailId) {
         emails[emailId] = getEmail(emailId);
+        delete emails[emailId].email;
     });
     response.send(emails);
 });
